@@ -1,0 +1,12 @@
+[console_scripts]
+csb-bfit = csb.apps.bfit:main
+csb-bfite = csb.apps.bfite:main
+csb-buildhmm = csb.apps.buildhmm:main
+csb-csfrag = csb.apps.csfrag:main
+csb-embd = csb.apps.embd:main
+csb-hhfrag = csb.apps.hhfrag:main
+csb-hhsearch = csb.apps.hhsearch:main
+csb-precision = csb.apps.precision:main
+csb-promix = csb.apps.promix:main
+csb-test = csb.test.app:main
+
