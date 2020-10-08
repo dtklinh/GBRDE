@@ -1,4 +1,5 @@
-#!/usr/bin/python3.7
+##/usr/bin/python3.7
+#!./venv/bin/python3.7
 
 import os, sys, getopt
 #import numpy as np
