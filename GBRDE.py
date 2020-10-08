@@ -7,8 +7,6 @@ sys.path.append(os.getcwd())
 sys.path.append(os.path.join(os.getcwd(),'venv/bin'))
 sys.path.append(os.path.join(os.getcwd(),'venv/lib/python3.7/site-packages'))
 
-for path in sys.path:
-    print(path)
 
 #os.system('. ./venv/bin/activate')
 #sys.exit(1)
@@ -94,7 +92,19 @@ else:
 ProtG = rdf.get_protein_graph()
 ##---------------------------------------
 ProtG.vs['color']= [List_Colors[idx] for idx in PredLabels]
+ProtG.vs['Cluster'] = [[v.index] for v in ProtG.vs]
 out = ig.plot(ProtG, target= os.path.join(OutFolder,name+'.png'), inline=True)
 #out.save(os.path.join(OutFolder,name+'.png'))
-import numpy as np
-np.savetxt(os.path.join(OutFolder,name+'.csv'), PredLabels, delimiter=",", fmt='%s')
+labels = set(PredLabels)
+Lines = []
+Lines.append('Predicted Labels')
+Lines.append(','.join(str(x) for x in PredLabels))
+for l in labels:
+    #count = sum([ 1 for idx, val in enumerate(PredLabels) if val==l])
+    rigid = ProtG.rmsd([idx for idx, val in enumerate(PredLabels) if val==l])
+    Lines.append('RMSD for rigid domain id:{}'.format(str(l)))
+    Lines.append(str(rigid))
+from Utils.MyIO import WriteList2File
+WriteList2File(os.path.join(OutFolder,name+'_Result.txt'), Lines)
+#import numpy as np
+#np.savetxt(os.path.join(OutFolder,name+'.csv'), PredLabels, delimiter=",", fmt='%s')
