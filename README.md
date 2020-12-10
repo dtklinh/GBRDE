@@ -45,3 +45,26 @@ Graph-based Rigid Domains Estimator
     -r <rigid_thres>   # default: 3.5
     -g <merging_thres> # default: 1.0
     -o <output_directory>' # default: current working directory
+
+# Web-service
+http://azifi.tz.agrar.uni-goettingen.de/webservice/
+
+There are three possible ways to upload a file and run the web-service
+
+1) Run by a PDB file
+File format: PDB format where a protein structure contains only one chain (default chain A) 
+   with at least two models (conformations) of this chain. The file example could be found
+   at the web-service
+   
+2) Run by a XYZ file
+File format: XYZ format.
+   This file contains at least two models/conformations of a protein chain.
+   The file example could be found at the web-service.
+   
+3) Run by a list of PDB IDs
+File format: a text file whose each line is a PDB code and a chain name of 
+   a protein chain, separated by an underscore. 
+   (For example: 1ake_A)
+   The text file has to consist of at least two lines.
+   The file example could be found at the web-service.
+   
